@@ -1,4 +1,4 @@
-# HIPER PERFORMANCE 1.1 — PUBLICAÇÃO
+# HIPER PERFORMANCE 1.2 — HOMOLOGAÇÃO
 
 PWA estático, offline, sem autenticação nem servidor. **Este repositório NÃO deve conter fichas pessoais, links originais, nem backups.**
 
@@ -26,3 +26,9 @@ Os testes automatizados cobrem a importação, recuperação da sessão, persist
 - 1.0: versão protótipo com fichas e links dentro da publicação.
 - 1.1: separação obrigatória dos dados privados, importação IndexedDB, backup autocontido, base de publicação `/hiper-performance/`, atualização do Service Worker sem limpar o banco.
 - Sem Supabase, Resend, login, backend, domínio pago ou custos contratados.
+
+## Versão 1.2
+- Histórico com sessões completas e parciais, exclusão do último treino e reinício do ciclo preservando fichas e preferências.
+- Exercícios dispensados não entram na comparação de cargas ou gráficos.
+- Banco e formato de backup mantidos. Testes reais pendentes.
+- Enviar à branch v1.2-homologacao, não à main. Testar localmente antes de incorporar à main. GitHub Pages continua publicando main.

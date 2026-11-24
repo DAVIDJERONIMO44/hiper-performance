@@ -1,6 +1,6 @@
-// HIPER PERFORMANCE v1.1. Only public shell files are cached.
+// HIPER PERFORMANCE v1.2. Only public shell files are cached.
 // Imported training plans and backups remain exclusively in the device's IndexedDB.
-const CACHE = 'hiper-shell-v1.1.0';
+const CACHE = 'hiper-shell-v1.2.0';
 const SCOPE = self.registration.scope;
 const SHELL = ['','index.html','app.js','style.css','manifest.webmanifest','icon-192.png','icon-512.png'];
 self.addEventListener('install', event => {
@@ -14,5 +14,8 @@ self.addEventListener('fetch', event => {
   const url = new URL(request.url);
   if (request.method !== 'GET' || url.origin !== self.location.origin || !url.href.startsWith(SCOPE)) return;
   // Private JSON and backups are never requested over the network.
-  event.respondWith(caches.match(request).then(cached => cached || fetch(request)));
+  event.respondWith(caches.open(CACHE).then(async cache => {
+    const key = request.mode === 'navigate' ? new URL('index.html', SCOPE).href : request;
+    return (await cache.match(key)) || fetch(request);
+  }));
 });
